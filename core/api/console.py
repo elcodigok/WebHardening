@@ -5,7 +5,7 @@ import cmd
 
 class Console(cmd.Cmd):
   
-    prompt = "> "
+    prompt = "WebHardening> "
     
     _colors = {'red': '#FF0000',
                'white': '#FFFFFF',
@@ -18,6 +18,15 @@ class Console(cmd.Cmd):
     def do_hello (self, name):
         """Says hello to someone"""
         print "Hello %s!" % name
+
+    def do_version(self, text):
+        print "WebHardening v0.1"
+
+    def do_start(self, text):
+        print "Start."
+
+    def do_load(self, file_name):
+        print "Load profile."
 
     def do_get_color (self, color):
         """Prints out the hex representation of a color"""
@@ -34,8 +43,17 @@ class Console(cmd.Cmd):
         print "Bye, bye…"
         return True
 
+    def help_version(self):
+        print "Show WebHardening version information."
+
     def help_quit (self):
         print "Quits the console"
+
+    def help_start(self):
+        print "Start the WebHardening"
+
+    def help_load(self):
+        print "Load profile."
 
     do_EOF = do_quit
     help_EOF = help_quit
