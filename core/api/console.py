@@ -28,6 +28,9 @@ class Console(cmd.Cmd):
     def do_load(self, file_name):
         print "Load profile."
 
+    def do_plugins(self, plugins):
+        print "Plugins."
+
     def do_get_color (self, color):
         """Prints out the hex representation of a color"""
         if color in self._colors:
