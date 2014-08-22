@@ -3,8 +3,10 @@
 
 import cmd
 
+from .plugins import Plugins
+
 class Console(cmd.Cmd):
-  
+
     prompt = "WebHardening> "
     
     _colors = {'red': '#FF0000',
@@ -14,6 +16,7 @@ class Console(cmd.Cmd):
     def __init__ (self):
         """Constructor"""
         cmd.Cmd.__init__(self)
+        self._plugins = Plugins()
 
     def do_hello (self, name):
         """Says hello to someone"""
@@ -29,7 +32,13 @@ class Console(cmd.Cmd):
         print "Load profile."
 
     def do_plugins(self, plugins):
-        print "Plugins."
+        if plugins in self._plugins.get_list_plugins():
+            print "%s: %s" % (plugins, plugins)
+        else:
+            print "I don’t know: %s" % plugins
+
+    def complete_plugins(self, text, line, begidx, endix):
+        return [i for i in self._plugins.get_list_plugins() if i.startswith(text)]
 
     def do_get_color (self, color):
         """Prints out the hex representation of a color"""
