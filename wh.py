@@ -22,16 +22,9 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 from core import show_banner
-from core.api.console import Console
-
 
 def main():
     show_banner()
 
 if __name__ == "__main__":
     main()
-    console = Console()
-    try:
-	    console.cmdloop("Hola!")
-    except KeyboardInterrupt:
-        console.do_quit(None)
